@@ -1,0 +1,138 @@
+/* 自研饼图组件样式 - 科技风格 */
+
+.pieChartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: var(--background-primary);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.canvas {
+  cursor: pointer;
+  transition: all var(--duration-base) var(--ease-smooth);
+}
+
+.canvas:hover {
+  transform: scale(1.02);
+}
+
+/* 图例样式 */
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  min-width: 200px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-base);
+  transition: all var(--duration-fast) var(--ease-smooth);
+  cursor: pointer;
+}
+
+.legendItem:hover,
+.legendItemHovered {
+  background: var(--background-secondary);
+  transform: translateX(4px);
+}
+
+.legendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--border-radius-sm);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-xs);
+}
+
+.legendLabel {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.legendValue {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+  font-family: var(--font-family-monospace);
+}
+
+/* 工具提示 */
+.tooltip {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  color: var(--text-inverse);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  z-index: 1000;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.tooltipTitle {
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-inverse);
+}
+
+.tooltipValue,
+.tooltipPercentage {
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-family-monospace);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .pieChartContainer {
+    padding: var(--spacing-sm);
+  }
+  
+  .legend {
+    min-width: 150px;
+  }
+  
+  .legendItem {
+    padding: var(--spacing-xs);
+  }
+  
+  .tooltip {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs);
+  }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.pieChartContainer {
+  animation: fadeIn var(--duration-slow) var(--ease-smooth);
+}
+
+/* 科技感增强 */
+.canvas {
+  border-radius: var(--border-radius-lg);
+  background: radial-gradient(circle at center, 
+    rgba(24, 144, 255, 0.02) 0%, 
+    transparent 70%);
+}

@@ -1,0 +1,327 @@
+/* 策略历史组件 - 科技风格设计 */
+.historyContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-lg);
+  font-family: var(--font-family-chinese), var(--font-family-english);
+}
+
+/* 头部区域 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.title {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-color);
+  margin: 0;
+  background: linear-gradient(45deg, var(--primary-color), var(--primary-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.statItem {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+}
+
+.statItem strong {
+  color: var(--primary-color);
+  font-weight: var(--font-weight-bold);
+}
+
+/* 策略列表 */
+.strategiesList {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-right: var(--spacing-xs);
+}
+
+/* 策略卡片 */
+.strategyCard {
+  background: var(--background-primary);
+  border-radius: var(--border-radius-large);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+  overflow: hidden;
+  position: relative;
+}
+
+.strategyCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary-color), var(--primary-hover));
+}
+
+.strategyCard:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--primary-color);
+}
+
+/* 卡片头部 */
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--background-tertiary);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.strategyInfo {
+  flex: 1;
+}
+
+.strategyName {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.strategyMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.riskTag {
+  padding: 2px var(--spacing-sm);
+  border-radius: var(--border-radius-medium);
+  color: white;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.createDate {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
+.cardActions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.deleteButton {
+  color: var(--error-color);
+}
+
+.deleteButton:hover {
+  color: var(--error-color);
+  background-color: rgba(255, 77, 79, 0.1);
+}
+
+/* 卡片内容 */
+.cardContent {
+  padding: var(--spacing-lg);
+}
+
+.description {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: var(--line-height-base);
+  margin-bottom: var(--spacing-md);
+}
+
+/* 性能指标 */
+.performanceMetrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--background-secondary);
+  border-radius: var(--border-radius-medium);
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.metricLabel {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.metricValue {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+}
+
+.metricValue.positive {
+  color: var(--success-color);
+}
+
+.metricValue.negative {
+  color: var(--error-color);
+}
+
+/* 配置预览 */
+.allocationsPreview {
+  margin-top: var(--spacing-md);
+}
+
+.allocationsLabel {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-xs);
+  display: block;
+}
+
+.allocationTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.allocationTag {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--primary-color);
+  color: white;
+  font-size: var(--font-size-sm);
+  border-radius: var(--border-radius-medium);
+  white-space: nowrap;
+}
+
+.moreTag {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--text-disabled);
+  color: white;
+  font-size: var(--font-size-sm);
+  border-radius: var(--border-radius-medium);
+  white-space: nowrap;
+}
+
+/* 空状态 */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: var(--spacing-xl);
+}
+
+.emptyIcon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.6;
+}
+
+.emptyTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.emptyDescription {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: var(--line-height-base);
+  max-width: 400px;
+}
+
+/* 加载状态 */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: var(--spacing-md);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-light);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loadingText {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+  
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+  
+  .cardActions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .performanceMetrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .allocationTags {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .historyContainer {
+    padding: var(--spacing-md);
+  }
+  
+  .performanceMetrics {
+    grid-template-columns: 1fr;
+  }
+  
+  .cardActions {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+}

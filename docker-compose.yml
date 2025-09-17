@@ -1,0 +1,102 @@
+version: '3.8'
+
+services:
+  # MySQL数据库
+  mysql:
+    image: mysql:8.0
+    container_name: etf_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: etf_strategy
+      MYSQL_USER: etf_user
+      MYSQL_PASSWORD: etf_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - etf_network
+
+  # Redis缓存
+  redis:
+    image: redis:7-alpine
+    container_name: etf_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - etf_network
+
+  # 后端服务
+  backend:
+    build: ./backend
+    container_name: etf_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=mysql+pymysql://etf_user:etf_password@mysql:3306/etf_strategy
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - SECRET_KEY=your-secret-key-change-in-production
+      - DEBUG=False
+      - ENVIRONMENT=production
+    volumes:
+      - ./backend/logs:/app/logs
+      - ./backend/config:/app/config
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - etf_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # 前端服务
+  frontend:
+    build: ./frontend
+    container_name: etf_frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - etf_network
+
+  # Nginx反向代理 (可选，如果需要更复杂的代理配置)
+  nginx:
+    image: nginx:alpine
+    container_name: etf_nginx
+    restart: unless-stopped
+    ports:
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - etf_network
+    profiles:
+      - production
+
+volumes:
+  mysql_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  etf_network:
+    driver: bridge

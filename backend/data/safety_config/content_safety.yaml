@@ -1,0 +1,40 @@
+content_safety:
+  # 敏感词库配置
+  keyword_filters:
+    political_sensitive:
+      enabled: true
+      severity: "high"
+      action: "block"
+      keywords_file: "keywords/political.txt"
+    
+    nsfw_content:
+      enabled: true
+      severity: "high" 
+      action: "block"
+      keywords_file: "keywords/nsfw.txt"
+    
+    financial_violations:
+      enabled: true
+      severity: "medium"
+      action: "warn_and_modify"
+      keywords_file: "keywords/financial_violations.txt"
+  
+  # 合规性规则
+  compliance_rules:
+    investment_advice:
+      require_risk_warning: true
+      require_disclaimer: true
+      max_return_promise: null
+      forbidden_guarantees: ["保证收益", "无风险", "稳赚不赔"]
+    
+    market_analysis:
+      require_objectivity: true
+      avoid_absolute_statements: true
+      require_data_source: true
+  
+  # 审查配置
+  review_settings:
+    auto_review_threshold: 0.8
+    human_review_threshold: 0.6
+    content_cache_ttl: 3600
+    audit_log_retention: 90  # 天

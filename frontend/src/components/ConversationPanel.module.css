@@ -1,0 +1,379 @@
+/* 对话面板组件样式 - 科技风格设计 */
+
+.conversationPanel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--background-primary);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+/* 对话头部 */
+.conversationHeader {
+  padding: var(--spacing-lg);
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  color: var(--text-inverse);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-sm);
+}
+
+.headerTitle h3 {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-inverse);
+}
+
+/* 状态指示器 */
+.statusIndicator {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-xl);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  font-size: var(--font-size-sm);
+}
+
+.connecting {
+  color: var(--warning-color);
+}
+
+.connected {
+  color: var(--success-color);
+}
+
+.disconnected {
+  color: var(--text-disabled);
+}
+
+.error {
+  color: var(--error-color);
+}
+
+.statusIcon {
+  font-size: var(--icon-sm);
+}
+
+.statusText {
+  font-weight: var(--font-weight-medium);
+}
+
+/* 当前状态 */
+.currentStatus {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--border-radius-full);
+  background: var(--success-color);
+  animation: pulse 2s infinite;
+}
+
+/* 消息容器 */
+.messagesContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--background-secondary);
+}
+
+.messagesList {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* 消息项 */
+.messageItem {
+  display: flex;
+  animation: slideUp var(--duration-base) var(--ease-smooth);
+}
+
+.userMessage {
+  justify-content: flex-end;
+}
+
+.assistantMessage {
+  justify-content: flex-start;
+}
+
+.messageContent {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--spacing-sm);
+  max-width: 70%;
+}
+
+.userMessage .messageContent {
+  flex-direction: row-reverse;
+}
+
+/* 头像 */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--border-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--icon-lg);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.userAvatar {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+}
+
+.assistantAvatar {
+  background: linear-gradient(135deg, var(--success-color), var(--success-hover));
+}
+
+/* 消息气泡 */
+.messageBubble {
+  background: var(--background-primary);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.userMessage .messageBubble {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  color: var(--text-inverse);
+}
+
+.userMessage .messageBubble::before {
+  content: '';
+  position: absolute;
+  right: -8px;
+  bottom: 8px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid var(--primary-color);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.assistantMessage .messageBubble::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  bottom: 8px;
+  width: 0;
+  height: 0;
+  border-right: 8px solid var(--background-primary);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.messageText {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  margin-bottom: var(--spacing-xs);
+}
+
+.messageMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+  opacity: 0.7;
+}
+
+.timestamp {
+  color: inherit;
+}
+
+.statusIcon {
+  font-size: var(--icon-xs);
+}
+
+.errorIcon {
+  color: var(--error-color);
+}
+
+/* 加载状态 */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+  gap: var(--spacing-md);
+}
+
+.loadingSpinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border-light);
+  border-top: 3px solid var(--primary-color);
+  border-radius: var(--border-radius-full);
+  animation: spin 1s linear infinite;
+}
+
+.loadingText {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* 错误提示 */
+.errorAlert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  margin: var(--spacing-md);
+  background: rgba(255, 77, 79, 0.1);
+  border: 1px solid var(--error-color);
+  border-radius: var(--border-radius-md);
+  color: var(--error-color);
+}
+
+.errorAlert .errorIcon {
+  font-size: var(--icon-lg);
+  flex-shrink: 0;
+}
+
+.errorContent {
+  flex: 1;
+}
+
+.errorTitle {
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-xs);
+}
+
+.errorDescription {
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+}
+
+/* 输入容器 */
+.inputContainer {
+  padding: var(--spacing-lg);
+  background: var(--background-primary);
+  border-top: 1px solid var(--border-light);
+}
+
+.inputWrapper {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: flex-end;
+}
+
+.inputWrapper > :first-child {
+  flex: 1;
+}
+
+.sendButton {
+  flex-shrink: 0;
+  min-width: 80px;
+}
+
+/* 动画 */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .conversationPanel {
+    border-radius: 0;
+    height: 100vh;
+  }
+  
+  .conversationHeader {
+    padding: var(--spacing-md);
+  }
+  
+  .messagesList {
+    padding: var(--spacing-sm);
+  }
+  
+  .messageContent {
+    max-width: 85%;
+  }
+  
+  .inputContainer {
+    padding: var(--spacing-md);
+  }
+  
+  .inputWrapper {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .sendButton {
+    width: 100%;
+  }
+}
+
+/* 科技感增强效果 */
+.conversationHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.5) 50%, 
+    transparent 100%);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

@@ -1,0 +1,177 @@
+/* 自研卡片组件样式 - 科技风格 */
+
+.card {
+  background: var(--background-primary);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-base) var(--ease-smooth);
+  overflow: hidden;
+  position: relative;
+}
+
+.bordered {
+  border: 1px solid var(--border-light);
+}
+
+.hoverable:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* 卡片尺寸 */
+.small {
+  --card-padding: var(--spacing-sm);
+  --title-size: var(--font-size-base);
+}
+
+.default {
+  --card-padding: var(--spacing-lg);
+  --title-size: var(--font-size-lg);
+}
+
+.large {
+  --card-padding: var(--spacing-xl);
+  --title-size: var(--font-size-xl);
+}
+
+/* 卡片头部 */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--card-padding);
+  border-bottom: 1px solid var(--border-light);
+  background: linear-gradient(145deg, var(--background-primary), var(--background-tertiary));
+}
+
+.cardTitle {
+  font-size: var(--title-size);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.cardExtra {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* 卡片主体 */
+.cardBody {
+  padding: var(--card-padding);
+  position: relative;
+}
+
+/* 加载状态 */
+.loading {
+  pointer-events: none;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+  gap: var(--spacing-md);
+}
+
+.loadingSpinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border-light);
+  border-top: 2px solid var(--primary-color);
+  border-radius: var(--border-radius-full);
+  animation: spin 1s linear infinite;
+}
+
+.loadingText {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* 科技感增强效果 */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--primary-color) 50%, 
+    transparent 100%);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-smooth);
+}
+
+.hoverable:hover::before {
+  opacity: 1;
+}
+
+/* 毛玻璃效果变体 */
+.card.glass {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 渐变边框变体 */
+.card.gradient-border {
+  position: relative;
+  background: var(--background-primary);
+}
+
+.card.gradient-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--border-radius-lg);
+  padding: 1px;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+/* 动画 */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .card {
+    border-radius: var(--border-radius-md);
+  }
+  
+  .small {
+    --card-padding: var(--spacing-xs);
+  }
+  
+  .default {
+    --card-padding: var(--spacing-md);
+  }
+  
+  .large {
+    --card-padding: var(--spacing-lg);
+  }
+  
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+  
+  .cardExtra {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

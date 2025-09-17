@@ -1,0 +1,246 @@
+/* 认证页面样式 - 科技风格设计 */
+
+.authPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, #1890FF 0%, #096DD9 100%);
+  overflow: hidden;
+}
+
+.authContainer {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 400px;
+  padding: var(--spacing-lg);
+}
+
+.authCard {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-xl);
+}
+
+/* 认证头部 */
+.authHeader {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.authTitle {
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: var(--font-size-xxxl);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.authSubtitle {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* 表单样式 */
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.submitButton {
+  margin-top: var(--spacing-md);
+  height: 48px;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* 页脚 */
+.authFooter {
+  margin-top: var(--spacing-xl);
+  text-align: center;
+}
+
+.divider {
+  position: relative;
+  margin: var(--spacing-lg) 0;
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: var(--font-size-sm);
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border-color);
+  z-index: 1;
+}
+
+.divider span {
+  background: var(--background-primary);
+  padding: 0 var(--spacing-md);
+  position: relative;
+  z-index: 2;
+}
+
+.switchLink {
+  display: inline-block;
+  color: var(--primary-color);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.switchLink:hover {
+  background: rgba(24, 144, 255, 0.1);
+  color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+/* 背景效果 */
+.authBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.backgroundPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .authPage {
+    padding: var(--spacing-md);
+  }
+  
+  .authContainer {
+    max-width: 100%;
+    padding: var(--spacing-md);
+  }
+  
+  .authCard {
+    margin: 0;
+  }
+  
+  .authTitle {
+    font-size: var(--font-size-xxl);
+  }
+  
+  .submitButton {
+    height: 44px;
+  }
+}
+
+/* 科技感动画效果 */
+.authCard {
+  animation: slideIn var(--duration-slow) var(--ease-smooth);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 输入框聚焦时的特殊效果 */
+.authForm input:focus {
+  box-shadow: 
+    var(--shadow-focus),
+    0 0 20px rgba(24, 144, 255, 0.1);
+}
+
+/* 注册页面特有样式 */
+.loginLink {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: color var(--transition-fast);
+}
+
+.loginLink:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.authHeader {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.authHeader h1 {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-color);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.authHeader p {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.required {
+  color: var(--error-color);
+}
+
+.terms {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
+.termsLink {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.termsLink:hover {
+  text-decoration: underline;
+}

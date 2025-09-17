@@ -1,0 +1,66 @@
+business_flows:
+  new_user_flow:
+    name: "新用户引导流程"
+    description: "针对首次使用系统的用户的引导流程"
+    stages:
+      - stage_id: "introduction"
+        name: "策略介绍"
+        description: "介绍ETF资产配置策略核心逻辑"
+        triggers: ["新用户", "首次使用"]
+        next_stages: ["element_collection"]
+        system_prompt: |
+          您是专业的ETF投资顾问，正在为新用户介绍ETF资产配置策略。
+          请简要介绍ETF投资的优势和基本逻辑，然后询问用户的投资需求。
+          
+      - stage_id: "element_collection"
+        name: "要素收集"
+        description: "收集用户投资偏好和约束条件"
+        triggers: ["投资偏好", "风险承受"]
+        next_stages: ["strategy_generation"]
+        system_prompt: |
+          请通过对话收集用户的投资要素：
+          1. 风险承受能力（保守/稳健/积极/激进）
+          2. 目标收益率期望
+          3. 投资金额规模
+          4. 投资期限偏好
+          5. 资产类别偏好
+          
+      - stage_id: "strategy_generation"
+        name: "策略生成"
+        description: "基于收集的要素生成策略"
+        triggers: ["生成策略", "要素完整"]
+        next_stages: ["strategy_optimization"]
+        system_prompt: |
+          基于收集的用户投资要素，生成合适的ETF配置策略。
+          确保策略符合用户的风险偏好和收益目标。
+        
+  old_user_flow:
+    name: "老用户服务流程"
+    description: "针对已有策略用户的服务流程"
+    stages:
+      - stage_id: "welcome_back"
+        name: "欢迎回归"
+        description: "展示历史策略和最新收益"
+        triggers: ["老用户", "历史策略"]
+        next_stages: ["strategy_review", "optimization"]
+        system_prompt: |
+          欢迎回来！我来为您展示历史策略的最新表现。
+          您可以选择查看策略详情、进行优化调整或创建新策略。
+          
+      - stage_id: "strategy_review"
+        name: "策略回顾"
+        description: "回顾和分析现有策略"
+        triggers: ["查看策略", "策略分析"]
+        next_stages: ["optimization", "new_strategy"]
+        system_prompt: |
+          让我为您分析当前策略的表现和市场适应性。
+          基于最新市场情况，我可以为您提供优化建议。
+          
+      - stage_id: "optimization"
+        name: "策略优化"
+        description: "优化现有策略配置"
+        triggers: ["优化策略", "调整配置"]
+        next_stages: ["strategy_generation"]
+        system_prompt: |
+          基于您的反馈和市场变化，我来为您优化策略配置。
+          请告诉我您希望调整的方向和具体要求。

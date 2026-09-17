@@ -30,7 +30,7 @@ class StrategyResponse(BaseModel):
     etf_allocations: List[dict]
     
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 
 class StrategySaveRequest(BaseModel):

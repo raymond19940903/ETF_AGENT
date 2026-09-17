@@ -3,7 +3,7 @@
 基于价格历史数据估算PE/PB等估值指标，补全Wind数据库中缺失的估值信息。
 """
 
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 import numpy as np
 import pandas as pd
 from datetime import datetime, timedelta

@@ -86,7 +86,7 @@ class StrategyResponse(BaseModel):
     performance_estimates: Optional[PerformanceMetrics]
     
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 
 class BacktestRequest(BaseModel):

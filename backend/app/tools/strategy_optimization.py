@@ -1,5 +1,5 @@
 """策略优化工具"""
-from typing import Dict, Any
+from typing import Dict, Any, List
 from langchain.tools import BaseTool
 from pydantic import BaseModel, Field
 import logging

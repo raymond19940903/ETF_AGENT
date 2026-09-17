@@ -1,5 +1,5 @@
 """LangChain工具模块 - 集成数据补全和安全审查"""
-from .base_tool import BaseETFTool
+from .base_tool import ETFBaseTool
 from .user_identification import UserIdentificationTool
 from .element_extraction import ElementExtractionTool
 from .etf_data_fetch import ETFDataFetchTool
@@ -10,7 +10,7 @@ from .strategy_optimization import StrategyOptimizationTool
 from .virtual_sector_data import VirtualSectorDataTool
 
 __all__ = [
-    "BaseETFTool",
+    "ETFBaseTool",
     "UserIdentificationTool",
     "ElementExtractionTool", 
     "ETFDataFetchTool",

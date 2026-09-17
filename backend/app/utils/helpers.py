@@ -1,7 +1,7 @@
 """辅助工具函数"""
 # 移除uuid依赖，使用时间戳生成ID
 import hashlib
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 import pandas as pd
 import numpy as np
 from datetime import datetime

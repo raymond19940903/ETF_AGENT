@@ -4,7 +4,7 @@
 """
 
 import re
-from typing import Dict, List, Set, Optional
+from typing import Any, Dict, List, Set, Optional
 from pathlib import Path
 import logging
 

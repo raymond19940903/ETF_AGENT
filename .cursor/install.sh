@@ -26,7 +26,9 @@ export PATH="$HOME/.local/bin:$PATH"
 
 echo "==> 配置后端 (Python 3.11 虚拟环境 + 依赖)"
 pushd backend >/dev/null
-uv venv --python 3.11 .venv
+if [ ! -x .venv/bin/python ]; then
+  uv venv --python 3.11 .venv
+fi
 # shellcheck disable=SC1091
 source .venv/bin/activate
 uv pip install -r requirements.txt
